@@ -7,6 +7,11 @@ public class Book {
     private String title;
     private String author;
 
+    //引数なしコンストラクタ
+    public Book(){
+        
+    }
+
     //Insert用コンストラクタ
     public Book(String title, String author){
         this.title = title;
