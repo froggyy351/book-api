@@ -16,27 +16,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/books")
 public class BookController {
-    private BookDAO dao;
+    private BookService service;
 
-    public BookController(BookDAO dao){
-        this.dao = dao;
+    public BookController(BookService service){
+        this.service = service;
     }
 
     @GetMapping
     public List<Book> getAll(){
-        return dao.findAll();
+        return service.getAll();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Book create(@RequestBody Book book){
-        dao.insert(book);
+        service.create(book);
         return book;
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id){
-        if(dao.deleteById(id)){
+        if(service.delete(id)){
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
