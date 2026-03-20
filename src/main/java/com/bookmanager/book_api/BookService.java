@@ -25,4 +25,8 @@ public class BookService {
     public boolean delete(int id){
         return dao.deleteById(id);
     }
+
+    public boolean update(int id, Book book){
+        return dao.updateById(id, book);
+    }
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/books")
@@ -37,8 +39,21 @@ public class BookController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id){
         if(service.delete(id)){
+            //204 No Content
             return ResponseEntity.noContent().build();
         } else {
+            //404 Not Found
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> update(@PathVariable int id, @RequestBody Book book) {
+        if(service.update(id, book)){
+            //204 No Content
+            return ResponseEntity.noContent().build();
+        } else {
+            //404 Not Found
             return ResponseEntity.notFound().build();
         }
     }
