@@ -42,4 +42,10 @@ public class BookDAO {
          int rows = jdbcTemplate.update(sql, id);
          return rows > 0;
     }
+
+    public boolean updateById(int id, Book book){
+        String sql = "update BOOKS set title = ?, author = ? where id = ?";
+        int rows = jdbcTemplate.update(sql, book.getTitle(), book.getAuthor(), id);
+        return rows > 0;
+    }
 }
