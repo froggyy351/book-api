@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PutMapping;
 
 
@@ -31,7 +34,7 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book create(@RequestBody Book book){
+    public Book create(@Valid @RequestBody Book book){
         service.create(book);
         return book;
     }
@@ -48,7 +51,7 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable int id, @RequestBody Book book) {
+    public ResponseEntity<Void> update(@PathVariable int id, @Valid @RequestBody Book book) {
         if(service.update(id, book)){
             //204 No Content
             return ResponseEntity.noContent().build();

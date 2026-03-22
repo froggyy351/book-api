@@ -1,10 +1,14 @@
 package com.bookmanager.book_api;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class Book {
 
     //フィールド
     private int id;
+    @NotBlank(message = "タイトルは必須です")
     private String title;
+    @NotBlank(message = "著者は必須です")
     private String author;
 
     //引数なしコンストラクタ
