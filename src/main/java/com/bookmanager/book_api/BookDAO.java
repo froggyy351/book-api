@@ -48,4 +48,16 @@ public class BookDAO {
         int rows = jdbcTemplate.update(sql, book.getTitle(), book.getAuthor(), id);
         return rows > 0;
     }
+
+    public Book findById(int id){
+        String sql = "SELECT id, title, author FROM books where id = ?";
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
+            return new Book(
+                rs.getInt("id"),
+                rs.getString("title"),
+                rs.getString("author")
+            );
+        }, id);    
+    }
+
 }

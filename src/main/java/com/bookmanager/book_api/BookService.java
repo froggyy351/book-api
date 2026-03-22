@@ -29,4 +29,8 @@ public class BookService {
     public boolean update(int id, Book book){
         return dao.updateById(id, book);
     }
+
+    public Book getBook(int id){
+        return dao.findById(id);
+    }
 }

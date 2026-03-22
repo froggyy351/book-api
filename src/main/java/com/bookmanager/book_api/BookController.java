@@ -42,7 +42,7 @@ public class BookController {
             //204 No Content
             return ResponseEntity.noContent().build();
         } else {
-            //404 Not Found
+            //404 Not Found 
             return ResponseEntity.notFound().build();
         }
     }
@@ -56,6 +56,11 @@ public class BookController {
             //404 Not Found
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/{id}")
+    public Book getBook(@PathVariable int id){
+        return service.getBook(id);
     }
 
 }
