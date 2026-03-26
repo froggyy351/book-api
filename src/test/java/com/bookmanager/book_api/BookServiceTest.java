@@ -62,6 +62,6 @@ public class BookServiceTest {
         boolean result = service.delete(999);
 
         //Assert：結果を検証
-        assertFalse(result);    
+        assertFalse(result);
     }
 }
