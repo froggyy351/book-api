@@ -14,7 +14,7 @@
 ## 技術スタック
 - Java 21
 - Spring Boot 3.5.11
-- H2 Database（インメモリDB）
+- PostgreSQL（本番DB）
 - Spring Data JDBC
 - Spring Validation
 <br>
